@@ -50,9 +50,7 @@ class Game extends Component {
     });
   }
 
-  handleWin(line) {
-
-  }
+  handleWin(line) {}
 
   render() {
     const history = this.state.history;
@@ -70,9 +68,19 @@ class Game extends Component {
       line = null;
     }
 
-
     const moves = history.map((objValue, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      let desc = move
+        ? "Go to move #" +
+          move +
+          " (" +
+          history[move].col +
+          ", " +
+          history[move].row +
+          ")"
+        : "Go to game start";
+      if (move === this.state.stepNumber) {
+        desc = <b>{desc}</b>;
+      }
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -121,6 +129,5 @@ function calculateWinner(squares) {
       return { winner: squares[a[0]][a[1]], line: lines[i] };
     }
   }
-  return {winner:null,line:null};
+  return { winner: null, line: null };
 }
-
