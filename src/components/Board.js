@@ -12,8 +12,6 @@ class Board extends Component {
   }
 
   render() {
-    //   const rows = 3;
-    //   const cols = 3;
     const rows = [0, 1, 2];
     const cols = [0, 1, 2];
     const squares = rows.map(row => {
