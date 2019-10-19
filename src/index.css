@@ -31,11 +31,12 @@ body {
     text-align: center;
     width: 34px;
   }
-  
   .square:focus {
     outline: none;
   }
-  
+  .square-win{
+    background: yellow;
+  }
   .kbd-navigation .square:focus {
     background: #ddd;
   }

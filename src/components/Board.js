@@ -2,13 +2,27 @@ import React, { Component } from "react";
 import Square from "./Square";
 
 class Board extends Component {
-  renderSquare(row,col) {
-    return (
+  renderSquare(row, col) {
+    const line = this.props.line ? this.props.line : [];
+    let square = (
       <Square
         value={this.props.squares[row][col]}
-        onClick={() => this.props.onClick(row,col)}
+        onClick={() => this.props.onClick(row, col)}
+        bgcolor={false}
       />
     );
+    for (let i = 0; i < line.length; i++) {
+      if (row === this.props.line[i][0] && col === this.props.line[i][1]) {
+        square = (
+          <Square
+            value={this.props.squares[row][col]}
+            onClick={() => this.props.onClick(row, col)}
+            bgcolor={true}
+          />
+        );
+      }
+    }
+    return square;
   }
 
   render() {
